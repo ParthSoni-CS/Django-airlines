@@ -15,19 +15,17 @@
             <li>No passenger</li>
         {% endfor %}
     </ul>
-    <h4>Non Passengers</h4>
-    <form action="{% url 'flight-book' flight.id%}" method="post">
-        {% csrf_token %}
-        <select name="passenger_select" id="">
+    <h4>Non-Passengers</h4>
+    <form action="{% url 'flight_book' flight.id %}" method="post" >
+        {%csrf_token%}
+    <select name="passenger-select">
         {% for passenger in npassengers %}
-            <option value = "{{ passenger.id }}">{{ passenger }}</option>
-         {% empty %}
-            <h4>Passenger is already in the flight</h4>
+            <option value="{{passenger.id}}">{{passenger}}</option>
         {% endfor %}
-        </select>
-        <input type="submit">
+        
+    </select>
+<input type="submit">
     </form>
-
 
 <h4><a href="{% url 'home' %}">List of flights</a></h4>
 {% endblock %}
